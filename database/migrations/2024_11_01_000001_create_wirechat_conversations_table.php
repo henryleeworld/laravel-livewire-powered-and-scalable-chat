@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Namu\WireChat\Facades\WireChat;
 use Namu\WireChat\Models\Conversation;
 
 return new class extends Migration
@@ -12,15 +13,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create((new Conversation)->getTable(), function (Blueprint $table) {
-            $table->id();
-
+        $usesUuid = WireChat::usesUuid();
+        Schema::create((new Conversation)->getTable(), function (Blueprint $table) use ($usesUuid) {
+            if ($usesUuid) {
+                $table->uuid('id')->primary();
+            } else {
+                $table->id();
+            }
             $table->string('type')->comment('Private is 1-1 , group or channel');
-
             $table->timestamp('disappearing_started_at')->nullable();
             $table->integer('disappearing_duration')->nullable();
-
-            //Index for conversation_id to speed up queries involving foreign keys
             $table->index('type');
             $table->timestamps();
         });

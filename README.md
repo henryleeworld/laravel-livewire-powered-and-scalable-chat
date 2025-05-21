@@ -1,4 +1,4 @@
-# Laravel 11 Livewire 強大且可擴充的聊天室
+# Laravel 12 Livewire 強大且可擴充的聊天室
 
 引入 namu 的 wirechat 套件來擴增強大且可擴充的聊天室，無論是要進行一對一即時通訊，還是透過專屬聊天室交流，協助您有條不紊地與團隊成員合作。
 
@@ -20,14 +20,6 @@ $ php artisan key:generate
 ```sh
 $ php artisan migrate --seed
 ```
-- 執行 __Artisan__ 指令的 __reverb:start__ 來執行 Reverb 伺服器啟動。
-```sh
-$ php artisan reverb:start
-```
-- 執行 __Artisan__ 指令的 __queue:work__ 來執行隊列作業器啟動來處理訊息廣播和其他隊列任務。
-```sh
-$ php artisan queue:work --queue=messages,default
-```
 - 執行安裝 Vite 和 Laravel 擴充套件引用的依賴項目。
 ```sh
 $ npm install
@@ -36,14 +28,22 @@ $ npm install
 ```sh
 $ npm run build
 ```
+- 執行 __Artisan__ 指令的 __reverb:start__ 來執行 Reverb 伺服器啟動。
+```sh
+$ php artisan reverb:start
+```
+- 執行 __Artisan__ 指令的 __queue:work__ 來執行隊列作業器啟動來處理訊息廣播和其他隊列任務。
+```sh
+$ php artisan queue:work --queue=messages,default
+```
 - 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
 - 你可以經由 `/chats` 來進行聊天室加入。
 
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/Xi1sJt4.gif)
+![](https://i.imgur.com/QGnaP6M.gif)
 > 如要與一群人或機構討論特定主題、專案或共同興趣，建議您建立聊天室
 
-![](https://i.imgur.com/Qea0TZA.png)
+![](https://i.imgur.com/GwkEGSv.png)
 > 為需要詳細討論的事務建立討論串
