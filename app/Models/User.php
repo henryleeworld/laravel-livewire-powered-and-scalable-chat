@@ -3,36 +3,22 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Namu\WireChat\Traits\Chatable;
+use Wirechat\Wirechat\Panel;
+use Wirechat\Wirechat\Traits\InteractsWithWirechat;
+use Wirechat\Wirechat\Contracts\WirechatUser;
 
-class User extends Authenticatable
+#[Fillable(['name', 'email', 'password'])]
+#[Hidden(['password', 'remember_token'])]
+class User extends Authenticatable implements WirechatUser
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use Chatable, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    /** @use HasFactory<UserFactory> */
+    use HasFactory, InteractsWithWirechat, Notifiable;
 
     /**
      * Get the attributes that should be cast.
@@ -45,5 +31,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function canAccessWirechatPanel(Panel $panel): bool
+    {
+        return true;//$this->hasVerifiedEmail();
+    }
+
+    public function canCreateChats(): bool
+    {
+        return true;//$this->hasVerifiedEmail();
+    }
+
+    public function canCreateGroups(): bool
+    {
+        return true;//$this->hasVerifiedEmail();
     }
 }

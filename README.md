@@ -1,6 +1,6 @@
-# Laravel 12 Livewire 強大且可擴充的聊天室
+# Laravel 13 Livewire 強大且可擴充的聊天室
 
-引入 namu 的 wirechat 套件來擴增強大且可擴充的聊天室，無論是要進行一對一即時通訊，還是透過專屬聊天室交流，協助您有條不紊地與團隊成員合作。
+引入 wirechat 的 wirechat 套件來擴增強大且可擴充的聊天室，無論是要進行一對一即時通訊，還是透過專屬聊天室交流，協助您有條不紊地與團隊成員合作。
 
 ## 使用方式
 - 把整個專案複製一份到你的電腦裡，這裡指的「內容」不是只有檔案，而是指所有整個專案的歷史紀錄、分支、標籤等內容都會複製一份下來。
@@ -42,8 +42,8 @@ $ php artisan queue:work --queue=messages,default
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/QGnaP6M.gif)
+![](https://i.imgur.com/8aIuaiD.gif)
 > 如要與一群人或機構討論特定主題、專案或共同興趣，建議您建立聊天室
 
-![](https://i.imgur.com/GwkEGSv.png)
+![](https://i.imgur.com/p6lnJ5d.png)
 > 為需要詳細討論的事務建立討論串

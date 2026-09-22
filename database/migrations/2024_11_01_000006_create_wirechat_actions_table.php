@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Namu\WireChat\Models\Action;
+use Wirechat\Wirechat\Facades\Wirechat;
 
 return new class extends Migration
 {
@@ -12,10 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create((new Action)->getTable(), function (Blueprint $table) {
+        $usesUuid = Wirechat::usesUuid();
+        Schema::create(Wirechat::actionModelTable(), function (Blueprint $table) {
             $table->id();
 
+            // Always string for UUID or integer-as-string
             // Actionable (the entity being acted upon)
             $table->unsignedBigInteger('actionable_id');
             $table->string('actionable_type');
@@ -43,6 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists((new Action)->getTable());
+        Schema::dropIfExists(Wirechat::actionModelTable());
     }
 };

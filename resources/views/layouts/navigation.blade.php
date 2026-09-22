@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('chats')" :active="request()->routeIs('chats')">
+                    <x-nav-link :href="route('wirechat.chats.chats')" :active="request()->routeIs('wirechat.chats.chats')">
                         {{ __('Chat') }}
                     </x-nav-link>
                 </div>
@@ -73,7 +73,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('chats')" :active="request()->routeIs('chats')">
+            <x-responsive-nav-link :href="route('wirechat.chats.chats')" :active="request()->routeIs('wirechat.chats.chats')">
                 {{ __('Chat') }}
             </x-responsive-nav-link>
         </div>
